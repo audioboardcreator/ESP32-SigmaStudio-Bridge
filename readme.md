@@ -10,11 +10,12 @@ Choose your language / Wählen Sie Ihre Sprache:
 
 This project allows you to program and tune an **Analog Devices ADAU1467 DSP** (or pin-compatible variants like ADAU1463/1452) completely wirelessly over Wi-Fi directly from **SigmaStudio**.
 
-The ESP32 acts as a high-performance bridge. It emulates SigmaStudio's native TCP protocol and forwards commands to the DSP via SPI-DMA (Direct Memory Access).
+The ESP32 acts as a high-performance bridge. It emulates SigmaStudio's native TCP protocol and forwards commands to the DSP via SPI-DMA (Direct Memory Access). It also features an autarkic SPI recorder to capture and replay full boot programs and presets directly from the local file system.
 
 ### Features
 * **Native SigmaStudio TCP Target:** No modifications required in SigmaStudio (uses the original Link Workstation architecture).
 * **Real-Time Tuning:** Zero-latency adjustments of EQ sliders, volume, etc., over Wi-Fi.
+* **Autonomous SPI Recorder (LittleFS):** Record entire compilation downloads or individual presets directly at the hardware SPI layer, store them in the ESP32's flash memory, and replay them anytime via numbers/names without a PC connection.
 * **FreeRTOS Multithreading:** Network I/O and SPI communication run isolated on separate cores – no blocking, maximum stability.
 * **High-Speed SPI with DMA:** Safely transfers even large firmware files without buffer overflows.
 
@@ -49,7 +50,19 @@ Pins can be customized in `Config.h`. By default, the following pinout applies t
    constexpr char WIFI_PASSWORD[] = "YOUR_WIFI_PASSWORD";
    ```
 3. Open the project in your development environment (Arduino IDE or PlatformIO) and flash it to your ESP32.
-4. Open the Serial Monitor (115200 Baud). Once connected to Wi-Fi, the ESP32 will display its **IP address**.
+4. Open the Serial Monitor (115200用意 Baud). Once connected to Wi-Fi, the ESP32 will display its **IP address** and load the active command dashboard.
+
+### Serial CLI Control
+
+The built-in Serial Monitor console allows you to control the device and manage your DSP programs using the following commands:
+
+* `list` : Refreshes and displays the menu interface and all saved binary programs.
+* `rec_on [Name]` : Starts recording all incoming hardware SPI write commands (Default name: `macro`).
+* `rec_off` : Stops the current recording and automatically lists the saved file inside the LittleFS system.
+* `replay [Number]` : Instantly plays back a macro or full boot program by its list index number (e.g., `replay 1`).
+* `replay [Name]` : Alternative method to trigger a replay directly via its file name string.
+* `tcp_log_on` / `tcp_log_off` : Toggles real-time hex dissection and printouts of network packets.
+* `status` : Displays current logging activities and recorder states.
 
 ### Configuration in SigmaStudio
 
@@ -80,11 +93,12 @@ To use the wireless connection, adjust your setup in SigmaStudio as follows:
 
 Dieses Projekt ermöglicht es, einen **Analog Devices ADAU1467 DSP** (oder baugleiche wie ADAU1463/1452) komplett kabellos über WLAN direkt aus **SigmaStudio** heraus zu programmieren und in Echtzeit zu tunen. 
 
-Der ESP32 fungiert als performante Bridge. Er emuliert das native TCP-Protokoll von SigmaStudio und leitet die Befehle via SPI-DMA (Direct Memory Access) an den DSP weiter.
+Der ESP32 fungiert als performante Bridge. Er emuliert das native TCP-Protokoll von SigmaStudio und leitet die Befehle via SPI-DMA (Direct Memory Access) an den DSP weiter. Zusätzlich enthält er einen autonomen SPI-Recorder, um komplette Programme oder Voreinstellungen abzufangen und dauerhaft ohne PC abzuspielen.
 
 ### Features
 * **Natives SigmaStudio TCP-Target:** Keine Modifikation an SigmaStudio nötig (nutzt die originale Link-Workstation-Architektur).
 * **Echtzeit-Tuning:** Latenzfreies Verschieben von EQ-Reglern, Lautstärke etc. via WLAN.
+* **Autarker SPI-Recorder (LittleFS):** Schneidet komplette Kompilierungs-Downloads oder dedizierte Einstellungen direkt auf der Hardware-SPI-Schicht mit, legt sie im Flash-Speicher des ESP32 ab und führt sie jederzeit per Index-Auswahl völlig autark ohne PC aus.
 * **FreeRTOS Multithreading:** Netzwerk-I/O und SPI-Kommunikation laufen isoliert auf eigenen Kernen – kein Blockieren, maximale Stabilität.
 * **High-Speed SPI mit DMA:** Sicheres Übertragen selbst großer Firmware-Dateien ohne Pufferüberlauf.
 
@@ -119,7 +133,19 @@ Die Pins können in der `Config.h` angepasst werden. Standardmäßig gilt folgen
    constexpr char WIFI_PASSWORD[] = "DEIN_WLAN_PASSWORT";
    ```
 3. Öffne das Projekt in deiner Entwicklungsumgebung (Arduino IDE oder PlatformIO) und flashe es auf deinen ESP32.
-4. Öffne den Seriellen Monitor (115200 Baud). Sobald sich der ESP32 verbunden hat, wird dir seine **IP-Adresse** angezeigt.
+4. Öffne den Seriellen Monitor (115200 Baud). Sobald sich der ESP32 verbunden hat, wird dir seine **IP-Adresse** sowie das interaktive Befehlsmenü angezeigt.
+
+### Serielle Terminal-Steuerung
+
+Das integrierte CLI im Seriellen Monitor erlaubt dir die volle Kontrolle über den DSP, ohne dass SigmaStudio geöffnet sein muss:
+
+* `list` : Aktualisiert die Anzeige und listet alle im LittleFS-Speicher vorhandenen Binärprogramme auf.
+* `rec_on [Name]` : Startet die Aufzeichnung aller reinen Hardware-SPI-Schreibbefehle unter dem gewünschten Namen (Standardname: `macro`).
+* `rec_off` : Stoppt die aktuelle Aufzeichnung und speichert die Datei permanent im Flash ab.
+* `replay [Nummer]` : Spielt das gespeicherte Makro oder Boot-Programm komfortabel über seine Menü-Indexnummer ab (z. B. `replay 1`).
+* `replay [Name]` : Führt alternativ das Replay direkt über die Eingabe des genauen Dateinamens aus.
+* `tcp_log_on` / `tcp_log_off` : Aktiviert/Deaktiviert das tiefe Live-Sezieren von Netzwerkpaketen im Hintergrund.
+* `status` : Zeigt den momentanen Zustand von Aufzeichnung und Netzwerk-Logging an.
 
 ### Konfiguration in SigmaStudio
 
