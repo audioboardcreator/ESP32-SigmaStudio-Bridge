@@ -1,5 +1,6 @@
 #include "TcpMessageQueue.h"
 #include <cstdlib>
+#include "DualConsole.h"
 
 TcpMessageQueue::TcpMessageQueue(UBaseType_t queueLength) : _queue(nullptr), _queueLength(queueLength) {}
 

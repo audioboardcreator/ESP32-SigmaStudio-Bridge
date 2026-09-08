@@ -21,7 +21,6 @@ private:
     static void loggerTaskEntry(void* parameter);
     void loggerTask();
     void parseAndPrintMessage(const LogMessage& msg);
-    void printHex(const LogMessage& msg);
 
     QueueHandle_t _logQueue;
     TaskHandle_t _taskHandle;

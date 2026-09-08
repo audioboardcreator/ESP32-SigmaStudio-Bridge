@@ -8,6 +8,7 @@ public:
     Adau1467(TcpMessageQueue& receiveQueue, TcpMessageQueue& transmitQueue);
     bool begin(spi_host_device_t spiHost, int mosiPin, int misoPin, int clockPin, int chipSelectPin, uint32_t clockFrequency, BaseType_t taskCore, UBaseType_t taskPriority);
     bool writeSpi(uint16_t address, const uint8_t* data, uint32_t length);
+    bool readSpi(uint16_t address, uint8_t* data, uint32_t length);
 
 private:
     struct WriteRequestHeader {
@@ -36,7 +37,6 @@ private:
     void processWriteRequest(const TcpMessage& message);
     void processReadRequest(const TcpMessage& message);
     bool initializeSpi(spi_host_device_t spiHost, int mosiPin, int misoPin, int clockPin, int chipSelectPin, uint32_t clockFrequency);
-    bool readSpi(uint16_t address, uint8_t* data, uint32_t length);
     bool transmitRaw(const uint8_t* transmitData, uint8_t* receiveData, size_t length, bool keepChipSelectActive);
     bool decodeWriteHeader(const TcpMessage& message, WriteRequestHeader& header) const;
     bool decodeReadRequestHeader(const TcpMessage& message, ReadRequestHeader& header) const;
@@ -46,7 +46,6 @@ private:
     void encodeBigEndian16(uint8_t* data, uint16_t value) const;
     void encodeBigEndian32(uint8_t* data, uint32_t value) const;
 
-private:
     TcpMessageQueue& _receiveQueue;
     TcpMessageQueue& _transmitQueue;
     TaskHandle_t _taskHandle;

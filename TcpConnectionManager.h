@@ -27,7 +27,6 @@ private:
     uint32_t decodeBigEndian32(const uint8_t* data);
     uint32_t getTotalLength(const uint8_t* preview);
 
-private:
     WiFiServer _server;
     WiFiClient _client;
     TcpMessageQueue& _receiveQueue;
@@ -42,6 +41,6 @@ private:
     uint32_t _messageLength;
     uint32_t _messageReceived;
 
-    static constexpr uint32_t MAX_MESSAGE_SIZE = 81920UL + 14UL;
+    static constexpr uint32_t MAX_MESSAGE_SIZE = 327680UL + 14UL;
     static constexpr size_t NETWORK_CHUNK_SIZE = 4096;
 };

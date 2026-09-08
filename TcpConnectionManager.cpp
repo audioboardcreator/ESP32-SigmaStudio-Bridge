@@ -6,6 +6,7 @@
 #include "TcpLogger.h"
 #include "TcpRecorder.h"
 #include "esp_heap_caps.h"
+#include "DualConsole.h"
 
 TcpConnectionManager::TcpConnectionManager(uint16_t port, TcpMessageQueue& receiveQueue, TcpMessageQueue& transmitQueue)
   : _server(port), _receiveQueue(receiveQueue), _transmitQueue(transmitQueue), _taskHandle(nullptr), _receiveState(ReceiveState::ReadPreview), _previewReceived(0), _messageBuffer(nullptr), _messageLength(0), _messageReceived(0) {

@@ -1,5 +1,6 @@
 #include "TcpLogger.h"
 #include "esp_heap_caps.h"
+#include "DualConsole.h"
 
 bool TcpLogger::active = false; 
 TcpLogger tcpLogger;
@@ -45,7 +46,10 @@ void TcpLogger::parseAndPrintMessage(const LogMessage& msg) {
     Serial.printf("[%lu ms] Direction: %s\n", msg.timestamp, (msg.type == LogType::RX) ? "INCOMING (FROM PC)" : "OUTGOING (TO PC)");
     Serial.printf("Raw Data Length: %lu Bytes\n", msg.length);
     Serial.println("--------------------------------------------------------");
-    uint8_t control = msg.data[0];
+    
+    // HIER DER FIX: Index [0] auslesen
+    uint8_t control = msg.data[0]; 
+    
     if (control == 0x09 && msg.length >= 14) {
         uint32_t totalLength = readBE32(&msg.data[3]);
         uint8_t chipAddr     = msg.data[7];
