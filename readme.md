@@ -76,10 +76,10 @@ void loop() {
     // Keep the TCP server, SPI recorder, and Putty console processing active
     dspBridge.run();
 }
-```
+ ```
 
 ### Serial & Putty CLI Control Dashboard
-
+ 
 Using the Serial Monitor or a Putty connection (Port configured in `Config.h`, e.g., `8087`), you can execute the following commands:
 
 * `list` : Refreshes and displays the menu interface and all saved binary programs inside LittleFS.

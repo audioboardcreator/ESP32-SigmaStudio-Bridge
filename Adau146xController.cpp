@@ -215,7 +215,7 @@ void Adau146XController::processCommand(const String& input) {
     }
   }
 }
-
+ 
 void Adau146XController::handleAutoboot() {
   if (!LittleFS.exists("/boot_prog.bin")) {
     Serial.println("\n[AUTOBOOT] No 'boot_prog.bin' found. Standing by for SigmaStudio or CLI...\n");

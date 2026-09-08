@@ -1,7 +1,7 @@
 #pragma once
 #include <Arduino.h>
 #include <WiFi.h>
-
+ 
 class DualConsole {
 public:
     DualConsole(HardwareSerial& serialHardware);

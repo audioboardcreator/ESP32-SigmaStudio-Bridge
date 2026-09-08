@@ -13,7 +13,7 @@ bool TcpRecorder::begin() {
   }
   return true;
 }
-
+ 
 bool TcpRecorder::startRecording(const String& fileName) {
     if (isRecording) {
         Serial.println("[RECORDER] Error: Recording is already in progress!");

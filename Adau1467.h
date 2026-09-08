@@ -9,7 +9,7 @@ public:
     bool begin(spi_host_device_t spiHost, int mosiPin, int misoPin, int clockPin, int chipSelectPin, uint32_t clockFrequency, BaseType_t taskCore, UBaseType_t taskPriority);
     bool writeSpi(uint16_t address, const uint8_t* data, uint32_t length);
     bool readSpi(uint16_t address, uint8_t* data, uint32_t length);
-
+ 
 private:
     struct WriteRequestHeader {
         uint8_t control;

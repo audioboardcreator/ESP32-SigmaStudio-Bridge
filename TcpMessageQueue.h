@@ -5,7 +5,7 @@ struct TcpMessage {
     uint32_t length;
     uint8_t* data;
 };
-
+ 
 class TcpMessageQueue {
 public:
     explicit TcpMessageQueue(UBaseType_t queueLength = 2);

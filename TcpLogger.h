@@ -9,7 +9,7 @@ struct LogMessage {
     uint32_t length;
     uint8_t* data;
 };
-
+ 
 class TcpLogger {
 public:
     TcpLogger();

@@ -6,7 +6,7 @@ bool TcpLogger::active = false;
 TcpLogger tcpLogger;
 
 TcpLogger::TcpLogger() : _logQueue(nullptr), _taskHandle(nullptr) {}
-
+ 
 bool TcpLogger::begin(BaseType_t core, UBaseType_t priority) {
     if (_taskHandle != nullptr) return true;
     _logQueue = xQueueCreate(LOG_QUEUE_LENGTH, sizeof(LogMessage));

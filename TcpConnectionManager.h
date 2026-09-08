@@ -8,7 +8,7 @@ public:
     TcpConnectionManager(uint16_t port, TcpMessageQueue& receiveQueue, TcpMessageQueue& transmitQueue);
     bool begin(const char* ssid, const char* password, BaseType_t core = 1, UBaseType_t priority = 1);
     bool connected();
-
+ 
 private:
     enum class ReceiveState : uint8_t { ReadPreview, ReadMessage };
     static void taskEntry(void* parameter);

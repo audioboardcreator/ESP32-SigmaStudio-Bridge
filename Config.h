@@ -2,7 +2,7 @@
 #include <Arduino.h>
 #include "driver/spi_master.h"
 #include "Credentials.h"
-
+ 
 constexpr uint16_t SERVER_PORT  = 8086;
 constexpr uint16_t CONSOLE_PORT = 8087;
 

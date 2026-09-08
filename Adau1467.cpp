@@ -87,7 +87,7 @@ void Adau1467::task() {
     _receiveQueue.release(message);
   }
 }
-
+ 
 void Adau1467::processMessage(const TcpMessage& message) {
   // WICHTIGER FIX: message.data[0] statt message.data prüfen!
   switch (message.data[0]) {

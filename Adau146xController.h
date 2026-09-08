@@ -11,7 +11,7 @@ public:
     bool begin();
     void run();
     Adau1467& getDsp();
-
+ 
 private:
     void handleAutoboot();
     void handleConsoleConnect();

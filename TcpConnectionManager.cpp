@@ -35,7 +35,7 @@ void TcpConnectionManager::taskEntry(void* parameter) {
   TcpConnectionManager* instance = static_cast<TcpConnectionManager*>(parameter);
   instance->task();
 }
-
+ 
 void TcpConnectionManager::task() {
   while (true) {
     handleDisconnect();

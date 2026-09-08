@@ -2,7 +2,7 @@
 #include <cstdarg>
 #include <cstdio>
 #include <string>
-
+ 
 DualConsole Console(Serial0);
 
 DualConsole::DualConsole(HardwareSerial& serialHardware) 

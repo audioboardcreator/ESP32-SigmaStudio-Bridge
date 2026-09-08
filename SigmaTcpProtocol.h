@@ -6,7 +6,7 @@
 constexpr uint8_t SIGMA_WRITE_REQUEST  = 0x09;
 constexpr uint8_t SIGMA_READ_REQUEST   = 0x0A;
 constexpr uint8_t SIGMA_READ_RESPONSE  = 0x0B;
-
+ 
 struct SigmaPacketHeader {
     uint8_t  control;
     uint32_t totalLength;

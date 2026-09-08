@@ -10,7 +10,7 @@ bool TcpMessageQueue::begin() {
     _queue = xQueueCreate(_queueLength, sizeof(TcpMessage));
     return (_queue != nullptr);
 }
-
+ 
 bool TcpMessageQueue::send(const TcpMessage& message, TickType_t timeout) {
     if (_queue == nullptr) return false;
     if (message.data == nullptr || message.length == 0) return false;
