@@ -126,8 +126,8 @@ Dieses Projekt ermöglicht es, einen **Analog Devices ADAU1467 DSP** (oder baugl
 Der ESP32 fungiert als performante Bridge. Er emuliert das native TCP-Protokoll von SigmaStudio, leitet die Befehle via SPI-DMA (Direct Memory Access) an den DSP weiter und bietet ein umfassendes Multi-Client-Konsolen-Framework.
 
 <p align="center">
-  <a href="https://youtu.be/czEAb8oGNLk">
-    <img src="https://youtube.com" alt="ADAU1467 without USBi Video Demo" width="75%">
+  <a href="https://www.youtube.com/watch?v=czEAb8oGNLk">
+    <img src="https://img.youtube.com/vi/czEAb8oGNLk/maxresdefault.jpg" alt="ADAU1467 Without USBi: Parallel Control with SigmaStudio & ESP32" width="600">
   </a>
 </p>
 
