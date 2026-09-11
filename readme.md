@@ -12,6 +12,12 @@ This project allows you to program, tune, and debug an **Analog Devices ADAU1467
 
 The ESP32 acts as a high-performance bridge. It emulates SigmaStudio's native TCP protocol, forwards commands via SPI-DMA (Direct Memory Access), and provides a comprehensive multi-client console framework.
 
+<p align="center">
+  <a href="https://youtu.be/czEAb8oGNLk">
+    <img src="https://youtube.com" alt="ADAU1467 without USBi Video Demo" width="75%">
+  </a>
+</p>
+
 ### Features & Architecture Updates
 * **Smart Software Autoboot (No Hardware Selfboot Pin Needed):** If a boot macro is saved under the name `boot_prog.bin` using the TcpRecorder, the `Adau146xController` will automatically detect, load, and initialize the ADAU1467 on startup. No physical `SELFBOOT` pin wiring or hardware pin pulling is required on the DSP side!
 * **Dead-Simple Code Integration:** To integrate the bridge into any existing project, simply instantiate the `Adau146xController` class and call its `.run()` method in your main loop.
@@ -118,6 +124,12 @@ To use the wireless connection, adjust your setup in SigmaStudio as follows:
 Dieses Projekt ermöglicht es, einen **Analog Devices ADAU1467 DSP** (oder baugleiche wie ADAU1463/1452) komplett kabellos über WLAN direkt aus **SigmaStudio** oder Remote-Netzwerk-Terminals heraus zu programmieren und zu debuggen. 
 
 Der ESP32 fungiert als performante Bridge. Er emuliert das native TCP-Protokoll von SigmaStudio, leitet die Befehle via SPI-DMA (Direct Memory Access) an den DSP weiter und bietet ein umfassendes Multi-Client-Konsolen-Framework.
+
+<p align="center">
+  <a href="https://youtu.be/czEAb8oGNLk">
+    <img src="https://youtube.com" alt="ADAU1467 without USBi Video Demo" width="75%">
+  </a>
+</p>
 
 ### Features & Architektur-Updates
 * **Intelligenter Software-Autoboot (Kein Hardware-Selfboot-Pin nötig):** Wenn ein Firmware-Boot-Makro unter dem Namen `boot_prog.bin` mithilfe des TcpRecorders aufgezeichnet wurde, erkennt der `Adau146xController` dies beim Starten automatisch, lädt es und initialisiert den ADAU1467 vollständig autark. Ein physischer `SELFBOOT`-Pin oder Hardware-Pull-Up/Downs am DSP sind für den Standalone-Betrieb nicht mehr erforderlich!
